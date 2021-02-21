@@ -1,18 +1,21 @@
  const initialState = {
      accessToken : 'NONE',
      refreshToken: 'NONE',
+     userName: 'NONE'
  }
 
 const reducer = (state = initialState, action) => {
     if (action.type === 'addAccessRefreshToken'){
          if (state.accessToken === 'NONE') {
-            console.log('From reducer state: ', action.newAccessToken)
-             state.accessToken = action.newAccessToken
-         }
-         if (state.refreshToken === 'NONE') {
+            state.accessToken = action.newAccessToken
             state.refreshToken = action.newRefreshToken
-        }
-
+            state.userName = action.newUserName
+         }
+    }
+    if (action.type === 'resetStore'){
+        state.accessToken = 'NONE'
+        state.refreshToken = 'NONE'
+        state.userName = 'NONE'
     }
     return state
 }

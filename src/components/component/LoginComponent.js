@@ -38,8 +38,9 @@ class LoginComponent extends Component {
         const response = await sendUsernamePassword(
             username, password
         )
-        this.props.onLogin(response.access_token, response.refresh_token)
+        this.props.onLogin(response.access_token, response.refresh_token, response.user_name)
     }
+    
     render() {
         const formElementsArray = []
         for (let key in this.state.loginForm) {
